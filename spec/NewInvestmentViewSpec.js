@@ -9,6 +9,10 @@ describe("NewInvestmentView", function() {
     expect(view.$el).toExist();
   });
   
+  it("should have an empty stock symbol", function() {
+    expect(view.getSymbolInput()).toHaveValue('');
+  });
+  
   it("should allow the input of the stock symbol", function() {
     
   });
