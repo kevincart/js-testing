@@ -1,6 +1,7 @@
 // Built-in Matchers, from Chapter 2
 // toEqual compares values
 // toEqual will be true if both value is equal, even if they are different references
+
 describe("Matchers, toEqual", function() {
   it("should pass equal numbers", function(){
     expect(1).toEqual(1);
@@ -34,6 +35,44 @@ describe("Matchers, toBe", function() {
   });
   
   it("should not pass same objects", function() {
-    expect({a: "testing"}).not.toBe({a: "testing"});
+    expect({a: "testing"}).not.toBe({a: "testing"}); // passes
+  });
+});
+
+// toBeDefined checks if a variable is defined, value unimportant
+
+describe("Matchers, toBeDefined", function() {
+  it("should pass any value other than undefined", function(){
+    expect(null).toBeDefined(); // passes
+  });
+});
+
+// toContain checks if an array contains an element, or if a string can be found in a string
+
+describe("Matchers, toContain", function() {
+  it("should pass if a string contains another string", function() {
+    expect("My big string").toContain("big");
+  });
+  
+  it("should pass if an array contains an element", function() {
+    expect([1,2,3]).toContain(2);
+  });
+});
+
+// toMatch tests a value against the stated regular expression (regex)
+
+describe("Matchers, toMatch", function() {
+  it("should pass a matching string", function() {
+    expect("My big matched string").toMatch(/My(.+)string/);
+  });
+});
+
+// toThrow checks a function to see if it throws an exception
+
+describe("Matchers, toThrow", function() {
+  it("should pass when the exception is thrown", function() {
+    expect(function() {
+      throw("Some exception");
+    }).toThrow("Some exception");
   });
 });
